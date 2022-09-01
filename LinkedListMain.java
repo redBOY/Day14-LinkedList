@@ -3,21 +3,13 @@ package com.bridgelabzLinkedList;
 public class LinkedListMain {
     public static void main(String[] args) {
         LinkedList<Integer> linkedList = new LinkedList<>();
-        linkedList.push(70);
-        linkedList.push(56);
-
-        linkedList.insert(30);
-
-        System.out.println(linkedList.popLast());
-
+        Node<Integer> node = new Node<>(56);
+        linkedList.head = node;
+        Node<Integer> node1 = new Node<>(30);
+        node.next = node1;
+        Node<Integer> node2 = new Node<>(70);
+        node1.next = node2;
         linkedList.display();
-        System.out.println();
 
-        if(linkedList.search(30) != null ){
-            System.out.println("Data found");
-        }
-        else{
-            System.out.println("Data not found");
-        }
     }
 }
