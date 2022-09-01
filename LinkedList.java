@@ -1,21 +1,73 @@
 package com.bridgelabzLinkedList;
 
-public class LinkedList {
-    public static void main(String[] args) {
-        Node firstNode = new Node(56);
-        Node secondNode = new Node(30);
-        Node thirdNode = new Node(70);
+public class LinkedList<T> {
+    Node<T> head;
+    Node<T> tail;
 
-        Node head = firstNode;
-        firstNode.setNext(secondNode);
-        secondNode.setNext(thirdNode);
-        Node tail = thirdNode;
-
-        Node temp = head;
-        System.out.println("LinkedList_Element");
-        while (temp != null) {
-            System.out.println(" "+temp.getData());
-            temp = temp.getNext();
+    void push(T data){
+        Node<T> node = new Node<>(data);
+        if(head == null){
+            head = node;
+            tail = node;
+        }
+        else{
+            node.next = head;
+            head = node;
         }
     }
+
+    public Node<T> search(T searchData) {
+        Node<T> temp = head;
+        while(temp != null){
+            if(temp.data.equals(searchData))
+                return temp;
+            temp = temp.next;
+        }
+        return null;
+    }
+
+    void add(T data){
+        Node<T> node = new Node<>(data);
+        if(head == null){
+            head = node;
+            tail = node;
+        }
+        else{
+            tail.next = node;
+            tail = node;
+        }
+    }
+
+    void display(){
+        Node<T> temp = head;
+        while (temp != null){
+            System.out.print(temp.data+ " ");
+            temp = temp.next;
+        }
+    }
+
+    public void insert(T data) {
+        Node<T> node = new Node<>(data);
+        head.next = node;
+        node.next = tail;
+    }
+
+    public T pop() {
+        T deletedElement = head.data;
+        head = head.next;
+        return deletedElement;
+    }
+
+    public T popLast(){
+        T deletedElement = tail.data;
+        Node<T> temp = head;
+        while(temp.next != tail){
+            temp = temp.next;
+        }
+        temp.next = null;
+        temp = tail;
+        return  deletedElement;
+
+    }
 }
+
