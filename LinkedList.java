@@ -1,4 +1,4 @@
-package com.bridgelabz.linkedlist;
+package com.bridgelabzLinkedList;
 
 public class LinkedList<T> {
     Node<T> head;
